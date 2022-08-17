@@ -23,6 +23,9 @@
     <TargetFrameworkProfile />
     <Use64BitIISExpress />
     <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <AppDInstalledThroughContent>true</AppDInstalledThroughContent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -317,6 +320,10 @@
     <Content Include="AngularJS\OuterModule\ngprogress.js" />
     <Content Include="AngularJS\AngularController\RegistrationController.js" />
     <Content Include="AngularJS\Routing\AdminRoutingModule.js" />
+    <Content Include="AppDynamics\AppDynamics.Agent.dll" />
+    <Content Include="AppDynamics\AppDynamics.Coordinator.exe" />
+    <Content Include="AppDynamics\AppDynamics.Profiler_x64.dll" />
+    <Content Include="AppDynamics\AppDynamics.Profiler_x86.dll" />
     <Content Include="bootstrap\css\bootstrap-theme.css" />
     <Content Include="bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="bootstrap\css\bootstrap.css" />
@@ -420,6 +427,16 @@
     <Content Include="Angularlib\errors.json" />
     <Content Include="Angularlib\version.json" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="AppDynamics\startup.cmd" />
+    <None Include="AppDynamics\dotNetAgentSetup64.msi" />
+    <None Include="AppDynamics\config_update.ps1" />
+    <Content Include="AppDynamics\applicationHost.xdt" />
+    <Content Include="AppDynamics\AppDynamicsConfig.json" />
+    <Content Include="AppDynamics\AppDynamicsAgentLog.config" />
+    <Content Include="AppDynamics\AppDynamics.Coordinator.exe.config" />
+    <None Include="AppDynamics\NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
@@ -539,6 +556,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\AppDynamics.WindowsAzure.4.4.1\build\AppDynamics.WindowsAzure.targets" Condition="Exists('..\packages\AppDynamics.WindowsAzure.4.4.1\build\AppDynamics.WindowsAzure.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\AppDynamics.WindowsAzure.4.4.1\build\AppDynamics.WindowsAzure.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\AppDynamics.WindowsAzure.4.4.1\build\AppDynamics.WindowsAzure.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

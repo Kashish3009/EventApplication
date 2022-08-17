@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <system.webServer>
+    <runtime xdt:Transform="InsertIfMissing">
+      <environmentVariables>
+        <add name="COR_ENABLE_PROFILING" value="1" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" />
+        <add name="COR_PROFILER" value="{39AEABC1-56A5-405F-B8E7-C3668490DB4A}" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" />
+        <add name="COR_PROFILER_PATH_32" value="%home%\site\wwwroot\AppDynamics\AppDynamics.Profiler_x86.dll" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" />
+        <add name="COR_PROFILER_PATH_64" value="%home%\site\wwwroot\AppDynamics\AppDynamics.Profiler_x64.dll" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" />
+        <add name="DotNetAgentFolder" value="%home%\site\wwwroot\App_Data\AppDynamics" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" />
+      </environmentVariables>
+    </runtime>
+  </system.webServer>
+</configuration>
